@@ -1,20 +1,25 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Container from '../Container';
 import Section from '../Section';
 import ContactsForm from '../ContactForm';
 import Filter from '../Filter';
 import ContactList from '../ContactList';
 
-const App = () => (
+const App = ({ contactsLenght }) => (
   <Container>
-    <Section title="Phonebook">
-      <ContactsForm />
-    </Section>
-    <Section title="Contacts">
-      <Filter />
-      <ContactList />
-    </Section>
+    <ContactsForm />
+    {contactsLenght > 0 && (
+      <Section title="Contacts">
+        <Filter />
+        <ContactList />
+      </Section>
+    )}
   </Container>
 );
+
+App.propTypes = {
+  contactsLenght: PropTypes.number.isRequired,
+};
 
 export default App;

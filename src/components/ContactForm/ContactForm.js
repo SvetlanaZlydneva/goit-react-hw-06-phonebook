@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import actions from '../../redux/contacts/actions';
+import Section from '../Section';
 import styles from './ContactForm.module.css';
 
 class ContactsForm extends Component {
@@ -51,7 +52,7 @@ class ContactsForm extends Component {
   render() {
     const { name, number, errorMessage } = this.state;
     return (
-      <>
+      <Section title="Phonebook">
         <form onSubmit={this.handleSubmit} className={styles.ContactsForm}>
           <input
             className={styles.contactName}
@@ -79,7 +80,7 @@ class ContactsForm extends Component {
             <button type="submit">Add contact</button>
           )}
         </form>
-      </>
+      </Section>
     );
   }
 }
