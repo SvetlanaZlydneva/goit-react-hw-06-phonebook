@@ -1,14 +1,10 @@
 import { connect } from 'react-redux';
 import actions from '../../redux/contacts/actions';
+import selectors from '../../redux/contacts/selectors';
 import ContactList from './ContactList';
 
-const getVisibleTodos = (items, filter) => {
-  const normalizedFilter = filter.toLowerCase();
-  return items.filter(({ name }) => name.includes(normalizedFilter));
-};
-
-const mapStateToProps = ({ contacts: { items, filter } }) => ({
-  contacts: getVisibleTodos(items, filter),
+const mapStateToProps = state => ({
+  contacts: selectors.getVisibleContacts(state),
 });
 
 const mapDispatchToProps = dispatch => ({
